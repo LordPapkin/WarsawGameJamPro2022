@@ -51,6 +51,9 @@ namespace Unity.FPS.Gameplay
         public float Damage = 40f;
         [SerializeField] float shieldDamageMultiplier = 5;
         [SerializeField] bool highDamageTroughShield = false;
+        [SerializeField] float explosionRadius = 3;
+        [SerializeField] float explosionDamages = 30;
+        [SerializeField] bool explodeOnWallHit = false;
         bool alreadyMultiplied = false;
 
         [Tooltip("Area of damage. Keep empty if you don<t want area damage")]
@@ -181,6 +184,18 @@ namespace Unity.FPS.Gameplay
                 {
                     Damage *= shieldDamageMultiplier;
                     alreadyMultiplied = true;
+                }
+
+                if (explodeOnWallHit && hits.Length > 0)
+                {
+                    var player = GameObject.FindGameObjectWithTag("Player");
+
+                    if (Vector3.Distance(player.transform.position, hits[0].point) < explosionRadius)
+                    {
+                        var dmg = player.GetComponent<Damageable>();
+                        if (dmg != null)
+                            dmg.InflictDamage(30, true, gameObject);
+                    }
                 }
 
                 hits = Physics.SphereCastAll(m_LastRootPosition, Radius,

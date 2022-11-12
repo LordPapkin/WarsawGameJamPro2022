@@ -138,8 +138,8 @@ MonoBehaviour:
   ShootType: 1
   ProjectilePrefab: {fileID: 8924682559891268397, guid: 59e79f25e16e85e44bb31210722e1850,
     type: 3}
-  DelayBetweenShots: 0.8
-  BulletSpreadAngle: 2
+  DelayBetweenShots: 2
+  BulletSpreadAngle: 0
   BulletsPerShot: 1
   RecoilForce: 1
   AimZoomRatio: 1
@@ -774,6 +774,7 @@ MonoBehaviour:
   loseWeaponOnKill: 1
   blankWeapon: {fileID: 5391986374566301945, guid: 10129281673f9194982850dab5f6ac59,
     type: 3}
+  doorController: {fileID: 0}
 --- !u!114 &3438884311055439690
 MonoBehaviour:
   m_ObjectHideFlags: 0

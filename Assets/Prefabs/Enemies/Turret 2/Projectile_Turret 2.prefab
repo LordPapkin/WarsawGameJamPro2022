@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de99b30e1e73fd14e98cc5371da25d12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 2
+  Radius: 0.2
   Root: {fileID: 3659995153115176982}
   Tip: {fileID: 1135791333161367127}
   MaxLifeTime: 5
@@ -59,14 +59,17 @@ MonoBehaviour:
     m_Bits: 4294967295
   ShieldLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
-  Speed: 100
+    m_Bits: 4096
+  Speed: 200
   GravityDownAcceleration: 0
   TrajectoryCorrectionDistance: 5
   InheritWeaponVelocity: 0
   Damage: 30
   shieldDamageMultiplier: 5
   highDamageTroughShield: 0
+  explosionRadius: 5
+  explosionDamages: 30
+  explodeOnWallHit: 1
   AreaOfDamage: {fileID: 0}
   RadiusColor: {r: 0, g: 1, b: 1, a: 1}
 --- !u!1 &5564024855854763701
