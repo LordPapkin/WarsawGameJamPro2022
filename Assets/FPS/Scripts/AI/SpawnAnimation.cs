@@ -25,12 +25,17 @@ namespace Unity.FPS.AI
 
         public void StartAnimation()
         {
+            if (finished)
+                return;
+
             transform.DOLocalMoveY(finishedAnimationHeight, fallDuration)
                 .SetEase(ease)
                 .OnComplete(() => { finished = true; });
 
             if (shake)
+            {
                 StartCoroutine(Shake(fallDuration - (fallDuration * 0.65f)));
+            }
         }
 
         IEnumerator Shake(float delay)
