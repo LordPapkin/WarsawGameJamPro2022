@@ -179,6 +179,7 @@ namespace Unity.FPS.Gameplay
                 RaycastHit[] hits = Physics.SphereCastAll(m_LastRootPosition, Radius,
                     displacementSinceLastFrame.normalized, displacementSinceLastFrame.magnitude, ShieldLayer,
                     k_TriggerInteraction);
+                Debug.Log(hits[0].collider.transform.gameObject.name);
 
                 if (highDamageTroughShield && hits.Length > 0 && !alreadyMultiplied)
                 {
