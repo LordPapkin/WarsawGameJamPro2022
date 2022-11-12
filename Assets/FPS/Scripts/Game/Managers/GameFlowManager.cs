@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Unity.FPS.Game
@@ -41,26 +44,31 @@ namespace Unity.FPS.Game
 
         void Start()
         {
-            AudioUtility.SetMasterVolume(1);
+            AudioUtility.SetMasterVolume(1f - PlayerPrefs.GetFloat("volume"));
         }
 
-        void Update()
+        private void Update()
         {
-            if (GameIsEnding)
-            {
-                float timeRatio = 1 - (m_TimeLoadEndGameScene - Time.time) / EndSceneLoadDelay;
-                EndGameFadeCanvasGroup.alpha = timeRatio;
-
-                AudioUtility.SetMasterVolume(1 - timeRatio);
-
-                // See if it's time to load the end scene (after the delay)
-                if (Time.time >= m_TimeLoadEndGameScene)
-                {
-                    SceneManager.LoadScene(m_SceneToLoad);
-                    GameIsEnding = false;
-                }
-            }
+            AudioUtility.SetMasterVolume(1f - PlayerPrefs.GetFloat("volume"));
         }
+
+        //void Update()
+        //{
+        //    if (GameIsEnding)
+        //    {
+        //        float timeRatio = 1 - (m_TimeLoadEndGameScene - Time.time) / EndSceneLoadDelay;
+        //        EndGameFadeCanvasGroup.alpha = timeRatio;
+
+        //        AudioUtility.SetMasterVolume(1 - timeRatio);
+
+        //        // See if it's time to load the end scene (after the delay)
+        //        if (Time.time >= m_TimeLoadEndGameScene)
+        //        {
+        //            SceneManager.LoadScene(m_SceneToLoad);
+        //            GameIsEnding = false;
+        //        }
+        //    }
+        //}
 
         void OnAllObjectivesCompleted(AllObjectivesCompletedEvent evt) => EndGame(true);
         void OnPlayerDeath(PlayerDeathEvent evt) => EndGame(false);
@@ -75,29 +83,8 @@ namespace Unity.FPS.Game
             GameIsEnding = true;
             EndGameFadeCanvasGroup.gameObject.SetActive(true);
             if (win)
-            {
-                m_SceneToLoad = WinSceneName;
-                m_TimeLoadEndGameScene = Time.time + EndSceneLoadDelay + DelayBeforeFadeToBlack;
-
-                // play a sound on win
-                var audioSource = gameObject.AddComponent<AudioSource>();
-                audioSource.clip = VictorySound;
-                audioSource.playOnAwake = false;
-                audioSource.outputAudioMixerGroup = AudioUtility.GetAudioGroup(AudioUtility.AudioGroups.HUDVictory);
-                audioSource.PlayScheduled(AudioSettings.dspTime + DelayBeforeWinMessage);
-
-                // create a game message
-                //var message = Instantiate(WinGameMessagePrefab).GetComponent<DisplayMessage>();
-                //if (message)
-                //{
-                //    message.delayBeforeShowing = delayBeforeWinMessage;
-                //    message.GetComponent<Transform>().SetAsLastSibling();
-                //}
-
-                DisplayMessageEvent displayMessage = Events.DisplayMessageEvent;
-                displayMessage.Message = WinGameMessage;
-                displayMessage.DelayBeforeDisplay = DelayBeforeWinMessage;
-                EventManager.Broadcast(displayMessage);
+            {               
+                StartCoroutine(EndGame());            
             }
             else
             {
@@ -105,6 +92,20 @@ namespace Unity.FPS.Game
                 m_TimeLoadEndGameScene = Time.time + EndSceneLoadDelay;
             }
         }
+
+        private IEnumerator EndGame()
+        {           
+            Time.timeScale = 0;
+            m_SceneToLoad = WinSceneName;
+            var audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.clip = VictorySound;
+            audioSource.playOnAwake = false;
+            audioSource.Play();
+            yield return new WaitForSecondsRealtime(2.79f);
+            SceneManager.LoadScene(m_SceneToLoad);
+        }
+
+       
 
         void OnDestroy()
         {

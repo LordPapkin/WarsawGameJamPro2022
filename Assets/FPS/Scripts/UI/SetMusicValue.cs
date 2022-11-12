@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.FPS.Game;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,17 +11,16 @@ public class SetMusicValue : MonoBehaviour
 
     private void Awake()
     {
-        if(slider != null)
-        {
-            volume = PlayerPrefs.GetFloat("musicVolume");
+        volume = PlayerPrefs.GetFloat("volume");
+        if (slider != null)
+        {            
             slider.value = volume;
-        }       
+        }        
     }
 
     public void SaveMusicVolume()
     {
-        volume = slider.value;
-        volume = Mathf.Clamp01(volume);
-        PlayerPrefs.SetFloat("musicVolume", volume);        
+        volume = slider.value;        
+        PlayerPrefs.SetFloat("volume", volume);        
     }
 }
