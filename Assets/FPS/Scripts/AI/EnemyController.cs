@@ -3,6 +3,7 @@ using Unity.FPS.Game;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using Unity.FPS.Gameplay;
 
 namespace Unity.FPS.AI
 {
@@ -119,8 +120,14 @@ namespace Unity.FPS.AI
         NavigationModule m_NavigationModule;
         SpawnAnimation spawnAnimation;
 
+        [SerializeField] bool loseWeaponOnKill = true;
+        [SerializeField] GameObject blankWeapon;
+        PlayerCharacterController playerCharacterController;
+
         void Start()
         {
+            playerCharacterController = FindObjectOfType<PlayerCharacterController>();
+
             m_EnemyManager = FindObjectOfType<EnemyManager>();
             DebugUtility.HandleErrorIfNullFindObject<EnemyManager, EnemyController>(m_EnemyManager, this);
 
@@ -386,6 +393,8 @@ namespace Unity.FPS.AI
                 if (LootPrefab.Length > 0)
                     Instantiate(LootPrefab[UnityEngine.Random.Range(0, LootPrefab.Length)], transform.position, Quaternion.identity);
             }
+
+            Instantiate(blankWeapon, playerCharacterController.transform.position, playerCharacterController.transform.rotation);
 
             // this will call the OnDestroy function
             Destroy(gameObject, DeathDuration);

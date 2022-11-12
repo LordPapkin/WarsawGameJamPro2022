@@ -57,12 +57,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505447205160222267}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 0.212, z: -0.35}
+  m_LocalPosition: {x: 0.1, y: 0.212, z: -0.049000002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6867164317952318004}
-  - {fileID: 2840577453783067109}
+  - {fileID: 5476871339391173610}
   - {fileID: 8334323006752503713}
   m_Father: {fileID: 2225486910712267856}
   m_RootOrder: 0
@@ -110,10 +110,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2225486910712267856}
   - component: {fileID: 8323776800172828795}
-  - component: {fileID: 8745372878802205896}
   - component: {fileID: 8090847488450120274}
   m_Layer: 10
-  m_Name: GlockWeak
+  m_Name: Blank
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -151,7 +150,7 @@ MonoBehaviour:
   WeaponIcon: {fileID: 21300000, guid: 8cbb10368086f014a8b7fc8932e7f436, type: 3}
   CrosshairDataDefault:
     CrosshairSprite: {fileID: 21300000, guid: 2962952d6e5ae7342a298d45a3945069, type: 3}
-    CrosshairSize: 40
+    CrosshairSize: 0
     CrosshairColor: {r: 0.4292453, g: 0.8855148, b: 1, a: 0.41960785}
   CrosshairDataTargetInSight:
     CrosshairSprite: {fileID: 21300000, guid: 2962952d6e5ae7342a298d45a3945069, type: 3}
@@ -160,9 +159,9 @@ MonoBehaviour:
   WeaponRoot: {fileID: 1505447205160222267}
   WeaponMuzzle: {fileID: 8334323006752503713}
   ShootType: 0
-  ProjectilePrefab: {fileID: 8924682559891268397, guid: b5a929731fafa1c42b7fd1095a227bc7,
+  ProjectilePrefab: {fileID: 8924682559891268397, guid: 19a40e16bcc540a448df037b07b113d8,
     type: 3}
-  DelayBetweenShots: 1
+  DelayBetweenShots: 0.1
   BulletSpreadAngle: 1
   BulletsPerShot: 1
   RecoilForce: 1
@@ -177,7 +176,7 @@ MonoBehaviour:
   ShellPoolSize: 1
   AmmoReloadRate: 1.1
   AmmoReloadDelay: 1
-  MaxAmmo: 9999999
+  MaxAmmo: 0
   AutomaticReleaseOnCharged: 0
   MaxChargeDuration: 1
   AmmoUsedOnStartCharge: 0
@@ -192,29 +191,9 @@ MonoBehaviour:
   ContinuousShootStartSfx: {fileID: 0}
   ContinuousShootLoopSfx: {fileID: 0}
   ContinuousShootEndSfx: {fileID: 0}
-  pickupPosition: {x: -102.75, y: -1.4516758, z: 2.75}
-  pickupPrefab: {fileID: 5391986374566301945, guid: b3d33a4bf296fe94bbdc18295ac7837b,
+  pickupPosition: {x: -53.25, y: -1.5767528, z: -1.75}
+  pickupPrefab: {fileID: 5391986374566301945, guid: 10129281673f9194982850dab5f6ac59,
     type: 3}
---- !u!114 &8745372878802205896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2225486910712267859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc94179cece5b4e41ae9298ddbf83fdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SimultaneousFuelCellsUsage: 0
-  FuelCells:
-  - {fileID: 6867164318175680859}
-  - {fileID: 6867164318175680853}
-  - {fileID: 6867164318175680855}
-  - {fileID: 6867164318175680849}
-  FuelCellUsedPosition: {x: 0, y: 0.1, z: 0}
-  FuelCellUnusedPosition: {x: 0, y: 0, z: 0}
 --- !u!82 &8090847488450120274
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1314,93 +1293,83 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1001 &2369310503689539086
+--- !u!1001 &5443576560400507905
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 825220459589154871}
     m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: d25e0e3a8a920c44a9687a4adf22a8b5,
+    - target: {fileID: -8679921383154817045, guid: 96ecfa7990b4b6f43994e9afbd07b714,
         type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d25e0e3a8a920c44a9687a4adf22a8b5,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5000001
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d25e0e3a8a920c44a9687a4adf22a8b5,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d25e0e3a8a920c44a9687a4adf22a8b5,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5000001
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d25e0e3a8a920c44a9687a4adf22a8b5,
+    - target: {fileID: -8679921383154817045, guid: 96ecfa7990b4b6f43994e9afbd07b714,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d25e0e3a8a920c44a9687a4adf22a8b5,
+    - target: {fileID: -8679921383154817045, guid: 96ecfa7990b4b6f43994e9afbd07b714,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.312
+      value: -0.23
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d25e0e3a8a920c44a9687a4adf22a8b5,
+    - target: {fileID: -8679921383154817045, guid: 96ecfa7990b4b6f43994e9afbd07b714,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.699
+      value: 0.449
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d25e0e3a8a920c44a9687a4adf22a8b5,
+    - target: {fileID: -8679921383154817045, guid: 96ecfa7990b4b6f43994e9afbd07b714,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d25e0e3a8a920c44a9687a4adf22a8b5,
+    - target: {fileID: -8679921383154817045, guid: 96ecfa7990b4b6f43994e9afbd07b714,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d25e0e3a8a920c44a9687a4adf22a8b5,
+    - target: {fileID: -8679921383154817045, guid: 96ecfa7990b4b6f43994e9afbd07b714,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: -0.7071068
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d25e0e3a8a920c44a9687a4adf22a8b5,
+    - target: {fileID: -8679921383154817045, guid: 96ecfa7990b4b6f43994e9afbd07b714,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d25e0e3a8a920c44a9687a4adf22a8b5,
+    - target: {fileID: -8679921383154817045, guid: 96ecfa7990b4b6f43994e9afbd07b714,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d25e0e3a8a920c44a9687a4adf22a8b5,
+    - target: {fileID: -8679921383154817045, guid: 96ecfa7990b4b6f43994e9afbd07b714,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d25e0e3a8a920c44a9687a4adf22a8b5,
+    - target: {fileID: -8679921383154817045, guid: 96ecfa7990b4b6f43994e9afbd07b714,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: d25e0e3a8a920c44a9687a4adf22a8b5,
+    - target: {fileID: 919132149155446097, guid: 96ecfa7990b4b6f43994e9afbd07b714,
         type: 3}
       propertyPath: m_Name
-      value: Glock
+      value: FN2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 96ecfa7990b4b6f43994e9afbd07b714,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d25e0e3a8a920c44a9687a4adf22a8b5, type: 3}
---- !u!4 &2840577453783067109 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 96ecfa7990b4b6f43994e9afbd07b714, type: 3}
+--- !u!4 &5476871339391173610 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d25e0e3a8a920c44a9687a4adf22a8b5,
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 96ecfa7990b4b6f43994e9afbd07b714,
     type: 3}
-  m_PrefabInstance: {fileID: 2369310503689539086}
+  m_PrefabInstance: {fileID: 5443576560400507905}
   m_PrefabAsset: {fileID: 0}
