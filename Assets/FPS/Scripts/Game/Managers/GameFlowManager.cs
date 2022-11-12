@@ -35,7 +35,7 @@ namespace Unity.FPS.Game
 
         float m_TimeLoadEndGameScene;
         string m_SceneToLoad;
-
+        [SerializeField] private Animator animator;
         void Awake()
         {
             EventManager.AddListener<AllObjectivesCompletedEvent>(OnAllObjectivesCompleted);
@@ -80,20 +80,18 @@ namespace Unity.FPS.Game
             Cursor.visible = true;
 
             // Remember that we need to load the appropriate end scene after a delay
-            GameIsEnding = true;
-            EndGameFadeCanvasGroup.gameObject.SetActive(true);
+            GameIsEnding = true;            
             if (win)
             {               
-                StartCoroutine(EndGame());            
+                StartCoroutine(WonGame());            
             }
             else
             {
-                m_SceneToLoad = LoseSceneName;
-                m_TimeLoadEndGameScene = Time.time + EndSceneLoadDelay;
+                StartCoroutine(LostGame());
             }
         }
 
-        private IEnumerator EndGame()
+        private IEnumerator WonGame()
         {           
             Time.timeScale = 0;
             m_SceneToLoad = WinSceneName;
@@ -102,6 +100,15 @@ namespace Unity.FPS.Game
             audioSource.playOnAwake = false;
             audioSource.Play();
             yield return new WaitForSecondsRealtime(2.79f);
+            SceneManager.LoadScene(m_SceneToLoad);
+        }
+
+        private IEnumerator LostGame()
+        {            
+            m_SceneToLoad = SceneManager.GetActiveScene().name;
+            EndGameFadeCanvasGroup.gameObject.SetActive(true);
+            animator.SetTrigger("FadeOut");
+            yield return new WaitForSecondsRealtime(3f);
             SceneManager.LoadScene(m_SceneToLoad);
         }
 

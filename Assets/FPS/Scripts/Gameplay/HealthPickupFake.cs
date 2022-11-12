@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Unity.FPS.Gameplay
 {
-    public class HealthPickup : Pickup
+    public class HealthPickupFake : Pickup
     {
         [Header("Parameters")] [Tooltip("Amount of health to heal on pickup")]
         public float HealAmount;
@@ -13,7 +13,7 @@ namespace Unity.FPS.Gameplay
             Health playerHealth = player.GetComponent<Health>();
             if (playerHealth)
             {
-                playerHealth.Heal(HealAmount);
+                playerHealth.TakeDamage(HealAmount, this.gameObject);
                 PlayPickupFeedback();
                 Destroy(gameObject);
             }
