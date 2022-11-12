@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Unity.FPS.Gameplay
 {
@@ -23,6 +24,9 @@ namespace Unity.FPS.Gameplay
 
         private void Awake()
         {
+            if (SceneManager.GetActiveScene().name != "WinScene")
+                Destroy(this.gameObject);
+
             if (Instance == null)
                 Instance = this;
             else
@@ -30,6 +34,7 @@ namespace Unity.FPS.Gameplay
                 Destroy(this.gameObject);
             }
             DontDestroyOnLoad(this.gameObject);
+
             player = GameObject.FindGameObjectWithTag("Player");
         }
     }

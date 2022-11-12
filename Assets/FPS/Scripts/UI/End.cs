@@ -6,11 +6,16 @@ using UnityEngine;
 public class End : MonoBehaviour
 {
     [SerializeField] private GameObject happyBSOD;
-    private IEnumerator Start()
+    private void Start()
     {
-        yield return new WaitForSeconds(8f);
+        StartCoroutine(StartEnd());
+    }
+
+    private IEnumerator StartEnd()
+    {
+        yield return new WaitForSecondsRealtime(8f);
         happyBSOD.SetActive(false);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSecondsRealtime(2f);
         Quit();
     }
 
