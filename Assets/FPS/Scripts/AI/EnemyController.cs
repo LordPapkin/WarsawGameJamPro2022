@@ -117,6 +117,7 @@ namespace Unity.FPS.AI
         WeaponController m_CurrentWeapon;
         WeaponController[] m_Weapons;
         NavigationModule m_NavigationModule;
+        SpawnAnimation spawnAnimation;
 
         void Start()
         {
@@ -198,10 +199,21 @@ namespace Unity.FPS.AI
                 m_EyeRendererData.Renderer.SetPropertyBlock(m_EyeColorMaterialPropertyBlock,
                     m_EyeRendererData.MaterialIndex);
             }
+
+            spawnAnimation = GetComponent<SpawnAnimation>();
         }
 
         void Update()
         {
+            if (spawnAnimation != null && spawnAnimation.animating)
+            {
+                DetectionModule.DetectionRange = 0;
+            } 
+            else
+            {
+                DetectionModule.DetectionRange = DetectionModule.startDetectionRange;
+            }
+
             EnsureIsWithinLevelBounds();
 
             DetectionModule.HandleTargetDetection(m_Actor, m_SelfColliders);
@@ -214,6 +226,8 @@ namespace Unity.FPS.AI
             }
 
             m_WasDamagedThisFrame = false;
+
+            
         }
 
         void EnsureIsWithinLevelBounds()

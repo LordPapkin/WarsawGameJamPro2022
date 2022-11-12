@@ -12,6 +12,7 @@ namespace Unity.FPS.AI
 
         [Tooltip("The max distance at which the enemy can see targets")]
         public float DetectionRange = 20f;
+        [HideInInspector] public float startDetectionRange;
 
         [Tooltip("The max distance at which the enemy can attack its target")]
         public float AttackRange = 10f;
@@ -40,6 +41,8 @@ namespace Unity.FPS.AI
         protected virtual void Start()
         {
             m_ActorsManager = FindObjectOfType<ActorsManager>();
+            startDetectionRange = DetectionRange;
+
             DebugUtility.HandleErrorIfNullFindObject<ActorsManager, DetectionModule>(m_ActorsManager, this);
         }
 
