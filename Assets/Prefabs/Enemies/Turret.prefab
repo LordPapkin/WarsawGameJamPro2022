@@ -621,7 +621,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996a8112d76f5dd4d9230264f2dc3199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallSpeed: 0
+  started: 0
+  animating: 1
+  fallSpeed: 6
 --- !u!114 &3320787663972339203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -776,7 +778,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5472305801670650111}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -975,6 +977,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DetectionSourcePoint: {fileID: 808727056365352779}
   DetectionRange: 30
+  startDetectionRange: 0
   AttackRange: 35
   KnownTargetTimeout: 4
   Animator: {fileID: 0}

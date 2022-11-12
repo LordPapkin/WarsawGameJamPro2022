@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ namespace Unity.FPS.AI
 {
     public class SpawnAnimation : MonoBehaviour
     {
+        public bool started = false;
         public bool animating = true;
 
         [SerializeField] float fallSpeed;
@@ -13,7 +15,7 @@ namespace Unity.FPS.AI
 
         private void Update()
         {
-            if (animating)
+            if (started && animating)
             {
                 var newPos = new Vector3(transform.position.x, transform.position.y - fallSpeed * Time.deltaTime, transform.position.z);
                 transform.position = newPos;
