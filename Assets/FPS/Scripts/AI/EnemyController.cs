@@ -205,7 +205,7 @@ namespace Unity.FPS.AI
 
         void Update()
         {
-            if (spawnAnimation != null && spawnAnimation.animating)
+            if (spawnAnimation != null && !spawnAnimation.finished)
             {
                 DetectionModule.DetectionRange = 0;
             } 

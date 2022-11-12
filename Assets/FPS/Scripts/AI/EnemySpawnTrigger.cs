@@ -11,7 +11,7 @@ namespace Unity.FPS.AI
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
-                spawnAnimation.started = true;
+                spawnAnimation.StartAnimation();
         }
     } 
 }

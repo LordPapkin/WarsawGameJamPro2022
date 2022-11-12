@@ -621,9 +621,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996a8112d76f5dd4d9230264f2dc3199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  started: 0
-  animating: 1
-  fallSpeed: 6
+  fallDuration: 1.5
+  finishedAnimationHeight: -1.75
+  ease: 30
+  finished: 0
 --- !u!114 &3320787663972339203
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,30 +2,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace Unity.FPS.AI
 {
     public class SpawnAnimation : MonoBehaviour
     {
-        public bool started = false;
-        public bool animating = true;
+        [SerializeField] float fallDuration;
+        [SerializeField] float finishedAnimationHeight;
+        [SerializeField] Ease ease;
 
-        [SerializeField] float fallSpeed;
+        [HideInInspector] public bool finished = false;
 
-
-        private void Update()
+        public void StartAnimation()
         {
-            if (started && animating)
-            {
-                var newPos = new Vector3(transform.position.x, transform.position.y - fallSpeed * Time.deltaTime, transform.position.z);
-                transform.position = newPos;
-
-                RaycastHit hit;
-                if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
-                {
-                    animating = false;
-                }
-            }
+            transform.DOLocalMoveY(finishedAnimationHeight, fallDuration)
+                .SetEase(ease)
+                .OnComplete(() => { finished = true; });
         }
     } 
 }
