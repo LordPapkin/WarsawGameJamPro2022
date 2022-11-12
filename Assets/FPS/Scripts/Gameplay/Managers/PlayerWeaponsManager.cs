@@ -208,7 +208,7 @@ namespace Unity.FPS.Gameplay
         // Sets the FOV of the main camera and the weapon camera simultaneously
         public void SetFov(float fov)
         {
-            m_PlayerCharacterController.PlayerCamera.fieldOfView = fov;
+            m_PlayerCharacterController.PlayerCamera.m_Lens.FieldOfView = fov;
             WeaponCamera.fieldOfView = fov * WeaponFovMultiplier;
         }
 
@@ -293,14 +293,14 @@ namespace Unity.FPS.Gameplay
                     m_WeaponMainLocalPosition = Vector3.Lerp(m_WeaponMainLocalPosition,
                         AimingWeaponPosition.localPosition + activeWeapon.AimOffset,
                         AimingAnimationSpeed * Time.deltaTime);
-                    SetFov(Mathf.Lerp(m_PlayerCharacterController.PlayerCamera.fieldOfView,
+                    SetFov(Mathf.Lerp(m_PlayerCharacterController.PlayerCamera.m_Lens.FieldOfView,
                         activeWeapon.AimZoomRatio * DefaultFov, AimingAnimationSpeed * Time.deltaTime));
                 }
                 else
                 {
                     m_WeaponMainLocalPosition = Vector3.Lerp(m_WeaponMainLocalPosition,
                         DefaultWeaponPosition.localPosition, AimingAnimationSpeed * Time.deltaTime);
-                    SetFov(Mathf.Lerp(m_PlayerCharacterController.PlayerCamera.fieldOfView, DefaultFov,
+                    SetFov(Mathf.Lerp(m_PlayerCharacterController.PlayerCamera.m_Lens.FieldOfView, DefaultFov,
                         AimingAnimationSpeed * Time.deltaTime));
                 }
             }
