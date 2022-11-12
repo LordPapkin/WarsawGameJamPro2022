@@ -123,7 +123,7 @@ Material:
     - _NormalMap_Scale: 1
     - _NormalSize: 0
     - _NormalStrength: 0
-    - _Normal_Scale: 1.33
+    - _Normal_Scale: 17.7
     - _Normal_Strength: 0.7
     - _OcclusionStrength: 1
     - _Parallax: 0.005
