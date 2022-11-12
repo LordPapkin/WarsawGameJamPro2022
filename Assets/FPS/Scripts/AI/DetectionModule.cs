@@ -34,7 +34,7 @@ namespace Unity.FPS.AI
         protected float TimeLastSeenTarget = Mathf.NegativeInfinity;
 
         ActorsManager m_ActorsManager;
-
+        public LayerMask detectionBlockingLayer = -1;
         const string k_AnimAttackParameter = "Attack";
         const string k_AnimOnDamagedParameter = "OnDamaged";
 
@@ -68,7 +68,7 @@ namespace Unity.FPS.AI
                         // Check for obstructions
                         RaycastHit[] hits = Physics.RaycastAll(DetectionSourcePoint.position,
                             (otherActor.AimPoint.position - DetectionSourcePoint.position).normalized, DetectionRange,
-                            -1, QueryTriggerInteraction.Ignore);
+                            detectionBlockingLayer, QueryTriggerInteraction.Ignore);
                         RaycastHit closestValidHit = new RaycastHit();
                         closestValidHit.distance = Mathf.Infinity;
                         bool foundValidHit = false;

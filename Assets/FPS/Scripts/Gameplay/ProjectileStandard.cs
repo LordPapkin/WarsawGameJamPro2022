@@ -32,6 +32,7 @@ namespace Unity.FPS.Gameplay
 
         [Tooltip("Layers this projectile can collide with")]
         public LayerMask HittableLayers = -1;
+        public LayerMask ShieldLayer = -1;
 
         [Header("Movement")] [Tooltip("Speed of the projectile")]
         public float Speed = 20f;
@@ -48,6 +49,8 @@ namespace Unity.FPS.Gameplay
 
         [Header("Damage")] [Tooltip("Damage of the projectile")]
         public float Damage = 40f;
+        [SerializeField] float shieldDamageMultiplier = 5;
+        [SerializeField] bool highDamageTroughShield = false;
 
         [Tooltip("Area of damage. Keep empty if you don<t want area damage")]
         public DamageArea AreaOfDamage;
@@ -63,7 +66,6 @@ namespace Unity.FPS.Gameplay
         Vector3 m_TrajectoryCorrectionVector;
         Vector3 m_ConsumedTrajectoryCorrectionVector;
         List<Collider> m_IgnoredColliders;
-
         const QueryTriggerInteraction k_TriggerInteraction = QueryTriggerInteraction.Collide;
 
         void OnEnable()
@@ -169,7 +171,17 @@ namespace Unity.FPS.Gameplay
 
                 // Sphere cast
                 Vector3 displacementSinceLastFrame = Tip.position - m_LastRootPosition;
+
                 RaycastHit[] hits = Physics.SphereCastAll(m_LastRootPosition, Radius,
+                    displacementSinceLastFrame.normalized, displacementSinceLastFrame.magnitude, ShieldLayer,
+                    k_TriggerInteraction);
+
+                if (highDamageTroughShield && hits.Length > 0)
+                {
+                    Damage *= shieldDamageMultiplier;
+                }
+
+                hits = Physics.SphereCastAll(m_LastRootPosition, Radius,
                     displacementSinceLastFrame.normalized, displacementSinceLastFrame.magnitude, HittableLayers,
                     k_TriggerInteraction);
                 foreach (var hit in hits)

@@ -92,7 +92,7 @@ namespace Unity.FPS.Game
         }
 
         private IEnumerator WonGame()
-        {           
+        {
             Time.timeScale = 0;
             m_SceneToLoad = WinSceneName;
             var audioSource = gameObject.AddComponent<AudioSource>();
@@ -104,7 +104,7 @@ namespace Unity.FPS.Game
         }
 
         private IEnumerator LostGame()
-        {            
+        {
             m_SceneToLoad = SceneManager.GetActiveScene().name;
             EndGameFadeCanvasGroup.gameObject.SetActive(true);
             animator.SetTrigger("FadeOut");
