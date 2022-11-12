@@ -76,6 +76,8 @@ namespace Unity.FPS.Gameplay
         public bool IsPointingAtEnemy { get; private set; }
         public int ActiveWeaponIndex { get; private set; }
 
+        public WeaponController ActiveWeaponPrefab { get; set; }
+
         public UnityAction<WeaponController> OnSwitchedToWeapon;
         public UnityAction<WeaponController, int> OnAddedWeapon;
         public UnityAction<WeaponController, int> OnRemovedWeapon;

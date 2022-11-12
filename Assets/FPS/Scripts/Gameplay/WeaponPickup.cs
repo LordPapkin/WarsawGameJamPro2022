@@ -25,17 +25,35 @@ namespace Unity.FPS.Gameplay
             PlayerWeaponsManager playerWeaponsManager = byPlayer.GetComponent<PlayerWeaponsManager>();
             if (playerWeaponsManager)
             {
-                if (playerWeaponsManager.AddWeapon(WeaponPrefab))
+
+                if (playerWeaponsManager.GetActiveWeapon() == null)
                 {
-                    // Handle auto-switching to weapon if no weapons currently
-                    if (playerWeaponsManager.GetActiveWeapon() == null)
+                    if (playerWeaponsManager.AddWeapon(WeaponPrefab))
                     {
                         playerWeaponsManager.SwitchWeapon(true);
-                    }
+                        playerWeaponsManager.ActiveWeaponPrefab = WeaponPrefab;
+                        playerWeaponsManager.ActiveWeaponPrefab.pickupPosition = transform.position;
 
-                    PlayPickupFeedback();
-                    Destroy(gameObject);
+                        PlayPickupFeedback();
+                        Destroy(gameObject);
+                    }
+                } 
+                else
+                {
+                    if (playerWeaponsManager.AddWeapon(WeaponPrefab))
+                    {
+                        playerWeaponsManager.RemoveWeapon(playerWeaponsManager.GetActiveWeapon());
+                        Instantiate(playerWeaponsManager.ActiveWeaponPrefab.pickupPrefab, playerWeaponsManager.ActiveWeaponPrefab.pickupPosition, WeaponPrefab.transform.rotation);
+
+                        playerWeaponsManager.SwitchWeapon(true);
+                        playerWeaponsManager.ActiveWeaponPrefab = WeaponPrefab;
+                        playerWeaponsManager.ActiveWeaponPrefab.pickupPosition = transform.position;
+
+                        PlayPickupFeedback();
+                        Destroy(gameObject);
+                    }
                 }
+
             }
         }
     }

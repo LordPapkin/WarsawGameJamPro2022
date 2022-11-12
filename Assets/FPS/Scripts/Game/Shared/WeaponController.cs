@@ -163,6 +163,9 @@ namespace Unity.FPS.Game
 
         private Queue<Rigidbody> m_PhysicalAmmoPool;
 
+        [HideInInspector] public Vector3 pickupPosition;
+        public GameObject pickupPrefab;
+
         void Awake()
         {
             m_CurrentAmmo = MaxAmmo;
