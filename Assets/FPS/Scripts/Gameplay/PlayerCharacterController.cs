@@ -1,6 +1,7 @@
 ﻿using Unity.FPS.Game;
 using UnityEngine;
 using UnityEngine.Events;
+using Cinemachine;
 
 namespace Unity.FPS.Gameplay
 {
@@ -8,7 +9,7 @@ namespace Unity.FPS.Gameplay
     public class PlayerCharacterController : MonoBehaviour
     {
         [Header("References")] [Tooltip("Reference to the main camera used for the player")]
-        public Camera PlayerCamera;
+        public CinemachineVirtualCamera PlayerCamera;
 
         [Tooltip("Audio source for footsteps, jump, etc...")]
         public AudioSource AudioSource;

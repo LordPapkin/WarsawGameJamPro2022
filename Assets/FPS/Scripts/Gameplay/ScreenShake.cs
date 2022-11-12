@@ -12,12 +12,16 @@ namespace Unity.FPS.Gameplay
         void Start()
         {
             Player = GetComponentInParent<PlayerCharacterController>();
-            StartCoroutine(Shake(2, 0.2f));
         }
 
-        public IEnumerator Shake(float duration, float magnitude)
+        public void LandShake(float delay)
         {
-            yield return new WaitForSeconds(3);
+            StartCoroutine(Shake(0.4f, 0.03f, delay));
+        }
+
+        public IEnumerator Shake(float duration, float magnitude, float delay)
+        {
+            yield return new WaitForSeconds(delay);
 
             Vector3 orignalPosition = transform.position;
             float elapsed = 0f;
@@ -27,7 +31,7 @@ namespace Unity.FPS.Gameplay
                 float x = Random.Range(-1f, 1f) * magnitude;
                 float y = Random.Range(-1f, 1f) * magnitude;
 
-                transform.position = new Vector3(x, y, -10f);
+                transform.position = transform.position + new Vector3(x, y, 0);
                 elapsed += Time.deltaTime;
                 yield return 0;
             }
