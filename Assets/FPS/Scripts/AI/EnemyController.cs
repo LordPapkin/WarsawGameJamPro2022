@@ -123,6 +123,7 @@ namespace Unity.FPS.AI
         [SerializeField] bool loseWeaponOnKill = true;
         [SerializeField] GameObject blankWeapon;
         PlayerCharacterController playerCharacterController;
+        [SerializeField] DoorController doorController;
 
         void Start()
         {
@@ -393,6 +394,9 @@ namespace Unity.FPS.AI
                 if (LootPrefab.Length > 0)
                     Instantiate(LootPrefab[UnityEngine.Random.Range(0, LootPrefab.Length)], transform.position, Quaternion.identity);
             }
+
+            if(doorController != null)
+                doorController.Open();
 
             Instantiate(blankWeapon, playerCharacterController.transform.position, playerCharacterController.transform.rotation);
 
