@@ -64,8 +64,8 @@ MonoBehaviour:
   GravityDownAcceleration: 0
   TrajectoryCorrectionDistance: 5
   InheritWeaponVelocity: 0
-  Damage: 5
-  shieldDamageMultiplier: 5
+  Damage: 1
+  shieldDamageMultiplier: 15
   highDamageTroughShield: 1
   AreaOfDamage: {fileID: 0}
   RadiusColor: {r: 0, g: 1, b: 1, a: 1}

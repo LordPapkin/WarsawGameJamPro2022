@@ -51,6 +51,7 @@ namespace Unity.FPS.Gameplay
         public float Damage = 40f;
         [SerializeField] float shieldDamageMultiplier = 5;
         [SerializeField] bool highDamageTroughShield = false;
+        bool alreadyMultiplied = false;
 
         [Tooltip("Area of damage. Keep empty if you don<t want area damage")]
         public DamageArea AreaOfDamage;
@@ -176,9 +177,10 @@ namespace Unity.FPS.Gameplay
                     displacementSinceLastFrame.normalized, displacementSinceLastFrame.magnitude, ShieldLayer,
                     k_TriggerInteraction);
 
-                if (highDamageTroughShield && hits.Length > 0)
+                if (highDamageTroughShield && hits.Length > 0 && !alreadyMultiplied)
                 {
                     Damage *= shieldDamageMultiplier;
+                    alreadyMultiplied = true;
                 }
 
                 hits = Physics.SphereCastAll(m_LastRootPosition, Radius,

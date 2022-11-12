@@ -47,7 +47,7 @@ MonoBehaviour:
   DetectionSourcePoint: {fileID: 951289297596456361}
   DetectionRange: 20
   startDetectionRange: 0
-  AttackRange: 10
+  AttackRange: 20
   KnownTargetTimeout: 12
   Animator: {fileID: 0}
   detectionBlockingLayer:
