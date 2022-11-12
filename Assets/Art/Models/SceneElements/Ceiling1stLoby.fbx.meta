@@ -3,7 +3,17 @@ guid: beb57b0161f72c249946442f9f73ecf7
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ceiling darkness
+    second: {fileID: 2100000, guid: 005442ab0c5b4984bb19895512b3b76a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ceilingbase
+    second: {fileID: 2100000, guid: 70062d3893a906442835ea7986a24e0b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
