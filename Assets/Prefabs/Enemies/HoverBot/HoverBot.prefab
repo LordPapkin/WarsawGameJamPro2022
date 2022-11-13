@@ -292,9 +292,9 @@ MonoBehaviour:
   ShootType: 1
   ProjectilePrefab: {fileID: 8924682559891268397, guid: 9ddd847c7f8eef141ac05ac3534a1599,
     type: 3}
-  DelayBetweenShots: 0.4
-  BulletSpreadAngle: 0
-  BulletsPerShot: 1
+  DelayBetweenShots: 0.8
+  BulletSpreadAngle: 4
+  BulletsPerShot: 3
   RecoilForce: 1
   AimZoomRatio: 1
   AimOffset: {x: 0, y: 0, z: 0}
@@ -798,6 +798,12 @@ MonoBehaviour:
   PathReachingRangeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   AttackRangeColor: {r: 1, g: 0, b: 0, a: 1}
   DetectionRangeColor: {r: 0, g: 0, b: 1, a: 1}
+  loseWeaponOnKill: 1
+  blankWeapon: {fileID: 0}
+  doorController: {fileID: 0}
+  customWeapons: 0
+  weapon1: {fileID: 0}
+  weapon2: {fileID: 0}
 --- !u!114 &1724951967475180376
 MonoBehaviour:
   m_ObjectHideFlags: 0

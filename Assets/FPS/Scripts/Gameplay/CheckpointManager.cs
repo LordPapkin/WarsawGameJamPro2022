@@ -24,9 +24,6 @@ namespace Unity.FPS.Gameplay
 
         private void Awake()
         {
-            if (SceneManager.GetActiveScene().name != "WinScene")
-                Destroy(this.gameObject);
-
             if (Instance == null)
                 Instance = this;
             else

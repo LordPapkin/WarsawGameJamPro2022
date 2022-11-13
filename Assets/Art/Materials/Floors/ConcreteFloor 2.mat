@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ConcreteFloor
+  m_Name: ConcreteFloor 2
   m_Shader: {fileID: -6465566751694194690, guid: 55068a5da4c76684d9e33c4ef0895249,
     type: 3}
   m_ValidKeywords: []
@@ -123,7 +123,7 @@ Material:
     - _NormalMap_Scale: 1
     - _NormalSize: 0
     - _NormalStrength: 0
-    - _Normal_Scale: 17.7
+    - _Normal_Scale: 8.02
     - _Normal_Strength: 0.7
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -144,5 +144,6 @@ Material:
     - _DarkColor: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _LightColor: {r: 0.46524566, g: 0.4811321, b: 0.47102255, a: 0}
+    - _Offset: {r: -1.23, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

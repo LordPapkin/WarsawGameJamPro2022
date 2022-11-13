@@ -731,8 +731,8 @@ MonoBehaviour:
   SwapToNextWeapon: 0
   DelayAfterWeaponSwap: 0
   EyeColorMaterial: {fileID: 2100000, guid: 778fbfe9a7e4a96418b9312dbfc4d67c, type: 2}
-  DefaultEyeColor: {r: 23.849056, g: 7.292185, b: 0, a: 1}
-  AttackEyeColor: {r: 32, g: 1.4610044, b: 0, a: 1}
+  DefaultEyeColor: {r: 59.017693, g: 18.230595, b: 0, a: 1}
+  AttackEyeColor: {r: 89.45409, g: 4.215114, b: 0, a: 1}
   BodyMaterial: {fileID: 2100000, guid: bc52f7878b77b454787353158253aa1a, type: 2}
   OnHitBodyGradient:
     serializedVersion: 2
@@ -777,6 +777,9 @@ MonoBehaviour:
   blankWeapon: {fileID: 5391986374566301945, guid: 10129281673f9194982850dab5f6ac59,
     type: 3}
   doorController: {fileID: 0}
+  customWeapons: 0
+  weapon1: {fileID: 0}
+  weapon2: {fileID: 0}
 --- !u!114 &3438884311055439690
 MonoBehaviour:
   m_ObjectHideFlags: 0

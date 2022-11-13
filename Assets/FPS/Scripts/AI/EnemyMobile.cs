@@ -32,6 +32,8 @@ namespace Unity.FPS.AI
         EnemyController m_EnemyController;
         AudioSource m_AudioSource;
 
+        public bool followPlayerAfterDetect = true;
+
         const string k_AnimMoveSpeedParameter = "MoveSpeed";
         const string k_AnimAttackParameter = "Attack";
         const string k_AnimAlertedParameter = "Alerted";
@@ -107,6 +109,13 @@ namespace Unity.FPS.AI
                 case AIState.Patrol:
                     m_EnemyController.UpdatePathDestination();
                     m_EnemyController.SetNavDestination(m_EnemyController.GetDestinationOnPath());
+
+                    if (!followPlayerAfterDetect && m_EnemyController.KnownDetectedTarget != null)
+                    {
+                        m_EnemyController.OrientTowards(m_EnemyController.KnownDetectedTarget.transform.position);
+                        m_EnemyController.TryAtack(m_EnemyController.KnownDetectedTarget.transform.position);
+                    }
+
                     break;
                 case AIState.Follow:
                     m_EnemyController.SetNavDestination(m_EnemyController.KnownDetectedTarget.transform.position);
@@ -138,7 +147,7 @@ namespace Unity.FPS.AI
 
         void OnDetectedTarget()
         {
-            if (AiState == AIState.Patrol)
+            if (AiState == AIState.Patrol && followPlayerAfterDetect)
             {
                 AiState = AIState.Follow;
             }
