@@ -125,6 +125,10 @@ namespace Unity.FPS.AI
         PlayerCharacterController playerCharacterController;
         [SerializeField] DoorController doorController;
 
+        [SerializeField] bool customWeapons = false;
+        [SerializeField] private WeaponController weapon1;
+        [SerializeField] private WeaponController weapon2;
+
         void Start()
         {
             playerCharacterController = FindObjectOfType<PlayerCharacterController>();
@@ -443,7 +447,17 @@ namespace Unity.FPS.AI
                 return false;
 
             // Shoot the weapon
-            bool didFire = GetCurrentWeapon().HandleShootInputs(false, true, false);
+            bool didFire;
+            if (!customWeapons)
+            {
+                didFire = GetCurrentWeapon().HandleShootInputs(false, true, false);
+            }
+            else
+            {
+                weapon1.HandleShootInputs(false, true, false);
+                didFire = weapon2.HandleShootInputs(false, true, false);
+            }
+            
 
             if (didFire && onAttack != null)
             {
