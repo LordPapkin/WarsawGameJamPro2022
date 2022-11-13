@@ -20,8 +20,7 @@ public class End : MonoBehaviour
     }
 
     private void Quit()
-    {        
-        EditorApplication.isPlaying = false;
+    { 
         Application.Quit();
     }
 }
